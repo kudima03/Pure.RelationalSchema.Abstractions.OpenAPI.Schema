@@ -2,8 +2,8 @@ version: 2
 updates:
 - package-ecosystem: nuget
   directories:
-    - "src/"
-    - "src/Tests/"
+    - "src/Pure.RelationalSchema.Abstractions.OpenAPI.Schema"
+    - "src/Tests/Pure.RelationalSchema.Abstractions.OpenAPI.Schema.Tests"
   schedule:
     interval: daily
 - package-ecosystem: "github-actions"
