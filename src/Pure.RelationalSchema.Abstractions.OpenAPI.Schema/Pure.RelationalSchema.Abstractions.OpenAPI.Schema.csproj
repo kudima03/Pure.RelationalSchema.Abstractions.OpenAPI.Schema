@@ -8,4 +8,12 @@
     <!--<EnablePackageValidation>true</EnablePackageValidation>
     <PackageValidationBaselineVersion>0.1.0-preview.0.1.0</PackageValidationBaselineVersion>-->
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>Pure.RelationalSchema.Abstractions.OpenAPI.Schema</PackageId>
+    <RootNamespace>Pure.RelationalSchema.Abstractions.OpenAPI.Schema</RootNamespace>
+    <AssemblyName>Pure.RelationalSchema.Abstractions.OpenAPI.Schema</AssemblyName>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kudima03/Pure.RelationalSchema.Abstractions.OpenAPI.Schema</PackageProjectUrl>
+  </PropertyGroup>
 </Project>
