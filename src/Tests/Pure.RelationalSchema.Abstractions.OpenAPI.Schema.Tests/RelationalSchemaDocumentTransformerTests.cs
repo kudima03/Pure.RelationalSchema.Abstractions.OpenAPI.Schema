@@ -138,7 +138,9 @@ public sealed record RelationalSchemaDocumentTransformerTests
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["Tables"].Type);
         _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Tables"].Items!);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["ForeignKeys"].Type);
-        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ForeignKeys"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(
+            schema.Properties!["ForeignKeys"].Items!
+        );
     }
 
     [Fact]
