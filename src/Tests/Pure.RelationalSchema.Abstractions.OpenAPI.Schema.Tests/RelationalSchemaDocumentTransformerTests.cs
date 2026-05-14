@@ -4,7 +4,10 @@ namespace Pure.RelationalSchema.Abstractions.OpenAPI.Schema.Tests;
 
 public sealed record RelationalSchemaDocumentTransformerTests
 {
-    private static OpenApiDocument BuildDocumentWithSchema(string name, JsonSchemaType type)
+    private static OpenApiDocument BuildDocumentWithSchema(
+        string name,
+        JsonSchemaType type
+    )
     {
         return new OpenApiDocument
         {
@@ -18,13 +21,18 @@ public sealed record RelationalSchemaDocumentTransformerTests
         };
     }
 
-    private static IOpenApiSchema Schema(OpenApiDocument document, string name) =>
-        document.Components!.Schemas![name];
+    private static IOpenApiSchema Schema(OpenApiDocument document, string name)
+    {
+        return document.Components!.Schemas![name];
+    }
 
     [Fact]
     public async Task IColumnIsReplacedWithObjectSchema()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("IColumn", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "IColumn",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
@@ -41,7 +49,10 @@ public sealed record RelationalSchemaDocumentTransformerTests
     [Fact]
     public async Task IIndexIsReplacedWithObjectSchema()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("IIndex", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "IIndex",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
@@ -53,13 +64,16 @@ public sealed record RelationalSchemaDocumentTransformerTests
         Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.Equal(JsonSchemaType.Boolean, schema.Properties!["IsUnique"].Type);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["Columns"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Columns"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Columns"].Items!);
     }
 
     [Fact]
     public async Task ITableIsReplacedWithObjectSchema()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("ITable", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "ITable",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
@@ -71,15 +85,18 @@ public sealed record RelationalSchemaDocumentTransformerTests
         Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.Equal(JsonSchemaType.String, schema.Properties!["Name"].Type);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["Columns"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Columns"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Columns"].Items!);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["Indexes"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Indexes"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Indexes"].Items!);
     }
 
     [Fact]
     public async Task IForeignKeyIsReplacedWithObjectSchema()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("IForeignKey", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "IForeignKey",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
@@ -89,18 +106,25 @@ public sealed record RelationalSchemaDocumentTransformerTests
 
         IOpenApiSchema schema = Schema(document, "IForeignKey");
         Assert.Equal(JsonSchemaType.Object, schema.Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencingTable"]);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencingTable"]);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["ReferencingColumns"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencingColumns"].Items!);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencedTable"]);
+        _ = Assert.IsType<OpenApiSchemaReference>(
+            schema.Properties!["ReferencingColumns"].Items!
+        );
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencedTable"]);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["ReferencedColumns"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ReferencedColumns"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(
+            schema.Properties!["ReferencedColumns"].Items!
+        );
     }
 
     [Fact]
     public async Task ISchemaIsReplacedWithObjectSchema()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("ISchema", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "ISchema",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
@@ -112,15 +136,18 @@ public sealed record RelationalSchemaDocumentTransformerTests
         Assert.Equal(JsonSchemaType.Object, schema.Type);
         Assert.Equal(JsonSchemaType.String, schema.Properties!["Name"].Type);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["Tables"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Tables"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["Tables"].Items!);
         Assert.Equal(JsonSchemaType.Array, schema.Properties!["ForeignKeys"].Type);
-        Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ForeignKeys"].Items!);
+        _ = Assert.IsType<OpenApiSchemaReference>(schema.Properties!["ForeignKeys"].Items!);
     }
 
     [Fact]
     public async Task UnrelatedSchemaIsNotModified()
     {
-        OpenApiDocument document = BuildDocumentWithSchema("MyCustomType", JsonSchemaType.Object);
+        OpenApiDocument document = BuildDocumentWithSchema(
+            "MyCustomType",
+            JsonSchemaType.Object
+        );
 
         await new RelationalSchemaDocumentTransformer().TransformAsync(
             document,
