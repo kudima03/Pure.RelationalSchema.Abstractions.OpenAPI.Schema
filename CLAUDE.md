@@ -13,7 +13,7 @@ dotnet format --verify-no-changes          # check formatting (CI enforces this)
 dotnet tool install -g csharpier && csharpier check .   # check csharpier style (CI enforces this)
 dotnet format && csharpier format .        # auto-fix code style
 dotnet test --no-build --verbosity normal  # run unit tests
-dotnet pack --configuration Release -p:PackageVersion=<version> --output .
+dotnet pack --configuration Release -p:Version=<version> --output .
 ```
 
 ## Architecture
