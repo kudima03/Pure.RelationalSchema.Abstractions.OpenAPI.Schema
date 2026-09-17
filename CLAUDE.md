@@ -16,6 +16,8 @@ dotnet test --no-build --verbosity normal  # run unit tests
 dotnet pack --configuration Release -p:Version=<version> --output .
 ```
 
+CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVersion`; see `.github/workflows/publish-nuget.yml`.
+
 ## Architecture
 
 This is a **single-class NuGet library** targeting `net10.0`. The entire public surface is one sealed class:
