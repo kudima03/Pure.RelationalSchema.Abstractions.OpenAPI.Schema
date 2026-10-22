@@ -6,6 +6,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.1.0-preview.0.3.0] — 2026-10-22
+
+### Changed
+- Updated `Microsoft.OpenApi` to `2.13.0` and `Microsoft.AspNetCore.OpenApi` to `10.0.13`.
+- The NuGet package now includes `README.md`.
+- Assembly and file versions are now derived from the release tag.
+
 ## [0.1.0-preview.0.2.2] — 2026-09-10
 
 - Maintenance release: dependency and build updates.
