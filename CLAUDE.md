@@ -28,7 +28,7 @@ At document generation time, ASP.NET Core produces schema components for `Pure.R
 
 **AOT:** `IsAotCompatible = true`. The schema map is a static `IReadOnlyDictionary` initialised at type load — no reflection at runtime.
 
-**Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.0.3.0`. Breaking API changes fail the build.
+**Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.0.3.1`. Breaking API changes fail the build.
 
 **Publishing:** triggered by pushing a semver tag (pattern `*.*.*`). The tag name becomes the `PackageVersion`. Packages are pushed to both GitHub Packages and NuGet.org.
 
