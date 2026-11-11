@@ -6,6 +6,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.1.0-preview.0.4.0] — 2026-11-11
+
+### Added
+- Added .NET 11 (`net11.0`) support.
+
+### Changed
+- CI now installs only the .NET 11 SDK and excludes source-generated files from code coverage.
+
 ## [0.1.0-preview.0.3.1] — 2026-10-31
 
 ### Changed
