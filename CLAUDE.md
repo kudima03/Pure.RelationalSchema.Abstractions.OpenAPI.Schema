@@ -20,7 +20,7 @@ CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVe
 
 ## Architecture
 
-This is a **single-class NuGet library** targeting `net10.0`. The entire public surface is one sealed class:
+This is a **single-class NuGet library** targeting `net10.0` and `net11.0`. The entire public surface is one sealed class:
 
 **`RelationalSchemaDocumentTransformer`** — implements `IOpenApiDocumentTransformer` (from `Microsoft.AspNetCore.OpenApi`).
 

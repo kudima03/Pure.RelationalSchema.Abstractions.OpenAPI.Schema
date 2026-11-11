@@ -32,6 +32,7 @@ ASP.NET Core's built-in OpenAPI generator introspects types at startup and emits
 ## Target Frameworks
 
 - .NET 10
+- .NET 11
 
 ## Installation
 
